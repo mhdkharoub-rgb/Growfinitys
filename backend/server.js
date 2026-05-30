@@ -269,4 +269,4 @@ Return JSON with: { summary: string, markets: [ { name, outlook: "Bullish"|"Bear
 }
 
 // ─── Start ────────────────────────────────────────────────────────────────────
-app.listen(PORT, () => console.log(`✅ GrowFinitys backend running on port ${PORT}`));
+app.listen(PORT, () => {   console.log(`✅ GrowFinitys backend running on port ${PORT}`);   // Keep-alive ping every 4 minutes to prevent Railway from sleeping   setInterval(() => {     const http = require('http');     http.get(`http://localhost:${PORT}/health`, () => {       console.log('💓 Keep-alive ping');     }).on('error', () => {});   }, 4 * 60 * 1000); });
